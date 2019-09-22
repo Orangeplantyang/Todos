@@ -8,6 +8,7 @@
 <style lang="scss">
 html,
 body {
+  overflow: hidden;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -39,7 +40,7 @@ input[type="checkbox"] {
   appearance: none;
 }
 #app {
-  overflow: hidden;
+  overflow: auto;
   box-sizing: border-box;
   padding: 10px;
   height: 100%;
