@@ -1,29 +1,58 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <h1>TODOS</h1>
-    </div>
+    <h1>TODOS</h1>
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  // color: #2c3e50;
-  color: #ff8c97;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
-#nav {
-  padding: 30px;
-  a {
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  color: inherit;
+  outline: none;
+  appearance: none;
+}
+input[type="checkbox"] {
+  margin: 0;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+#app {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 100%;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #ff8c97;
+  background: #f5f5f5;
+
+  h1 {
+    margin: 0;
+    padding: 30px;
+    font-size: 4em;
     font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
 }
 </style>
