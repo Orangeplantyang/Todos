@@ -10,6 +10,19 @@
   .header {
     position: relative;
 
+    .edit::-webkit-input-placeholder {
+      font-style: italic;
+      color: #f1f1f1;
+    }
+    .edit:-moz-placeholder {
+      font-style: italic;
+      color: #f1f1f1;
+    }
+    .edit:-ms-input-placeholder {
+      font-style: italic;
+      color: #f1f1f1;
+    }
+
     .toggle-all {
       position: absolute;
       left: 0;
@@ -51,7 +64,7 @@
     .v-leave-to {
       position: absolute;
       opacity: 0;
-      transform: translateY(100px);
+      transform: translateY(80px);
     }
     .v-enter-active,
     .v-leave-active {

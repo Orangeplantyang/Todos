@@ -4,7 +4,9 @@
       <input v-model="editText"
              type="text"
              class="edit"
-             @keyup.enter="faddTodo()">
+             @keyup.enter="faddTodo()"
+             placeholder="what needs to be done?"
+             autofocus>
       <input id="toggle-all"
              type="checkbox"
              @click="ftoggleAll()">
@@ -55,6 +57,16 @@
 <script>
 export default {
   name: 'home',
+  created () {
+    let active = localStorage.getItem('TODOLISTS_ACTIVE')
+    let completed = localStorage.getItem('TODOLISTS_COMPLETED')
+    if (active) {
+      this.active = JSON.parse(active)
+    }
+    if (completed) {
+      this.completed = JSON.parse(completed)
+    }
+  },
   data () {
     return {
       editText: '',
@@ -83,6 +95,14 @@ export default {
     },
     allCount () {
       return this.active.length + this.completed.length
+    }
+  },
+  watch: {
+    'active' (val) {
+      localStorage.setItem('TODOLISTS_ACTIVE', JSON.stringify(val))
+    },
+    'completed' (val) {
+      localStorage.setItem('TODOLISTS_COMPLETED', JSON.stringify(val))
     }
   },
   methods: {
