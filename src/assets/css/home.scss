@@ -1,7 +1,7 @@
 .home {
   position: relative;
   margin: 0 auto;
-  min-width: 253px;
+  min-width: 480px;
   max-width: 550px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
@@ -27,7 +27,7 @@
       position: absolute;
       left: 0;
       width: 60px;
-      height: 62px;
+      height: 100%;
       background-image: url(../assets/uncompleted.svg);
       background-size: 30px 30px;
       background-position: 16px 50%;
@@ -121,7 +121,7 @@
         left: 0;
         margin: auto 0;
         width: 60px;
-        height: auto;
+        height: 100%;
         text-align: center;
         opacity: 0;
       }

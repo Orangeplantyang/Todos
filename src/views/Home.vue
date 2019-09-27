@@ -25,7 +25,12 @@
           <input class="toggle"
                  type="checkbox"
                  @click="ftoggleTodo(item, index)">
-          <label @dblclick="feditTodo(item, index)">{{ item.text }}</label>
+          <label :id="item.id"
+                 :draggable="model!=='all'"
+                 @dragstart="fonDragStart"
+                 @dragover="fonDragOver"
+                 @dragend="fonDragEnd"
+                 @dblclick="feditTodo(item, index)">{{ item.text }}</label>
           <button class="destroy"
                   @click="fdeleteTodo(item, index)"></button>
         </div>
@@ -67,6 +72,12 @@ export default {
       this.completed = JSON.parse(completed)
     }
   },
+  // mounted () {
+  //   document.body.ondrop = function (event) {
+  //     event.preventDefault()
+  //     event.stopPropagation()
+  //   }
+  // },
   data () {
     return {
       editText: '',
@@ -79,7 +90,9 @@ export default {
         { name: 'all', model: 'all' },
         { name: 'active', model: 'active' },
         { name: 'completed', model: 'completed' }
-      ]
+      ],
+      draging: null,
+      target: null // 目标对象
     }
   },
   computed: {
@@ -106,6 +119,42 @@ export default {
     }
   },
   methods: {
+    fonDragStart (event) {
+      this.draging = event.target
+    },
+    fonDragOver (event) {
+      event.preventDefault()
+      if (event.target !== this.draging) {
+        this.target = event.target
+      }
+    },
+    fonDragEnd (event) {
+      if (this.target && event.target !== this.target) {
+        this.fexchange(this.draging.id, this.target.id)
+      }
+    },
+    fexchange (id1, id2) {
+      let index1 = 0
+      let index2 = 0
+      let array = []
+      if (this.model === 'active') {
+        array = this.active
+      } else {
+        array = this.completed
+      }
+      for (let i = 0; i < array.length; i++) {
+        if (id1.toString() === array[i].id.toString()) {
+          index1 = i
+        }
+        if (id2.toString() === array[i].id.toString()) {
+          index2 = i
+        }
+      }
+      this.$nextTick(() => {
+        // [array[index1], array[index2]] = [array[index2], array[index1]]
+        array.splice(index2, 1, ...array.splice(index1, 1, array[index2]))
+      })
+    },
     fgetPosition (completed, index) {
       if (this.model === 'active' || this.model === 'completed' || !completed) {
         return index
@@ -116,7 +165,8 @@ export default {
     faddTodo () {
       let text = this.editText.trim()
       if (text && text !== '') {
-        this.active.unshift({ completed: false, text: this.editText, id: this.allCount })
+        let id = (Math.random().toString().substr(3, 27) + Date.now()).toString(24)
+        this.active.unshift({ completed: false, text: this.editText, id: id })
         this.editText = ''
       }
     },

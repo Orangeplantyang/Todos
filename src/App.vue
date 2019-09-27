@@ -14,12 +14,14 @@ body {
   width: 100%;
   height: 100%;
 }
+
 ul,
 li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 button {
   margin: 0;
   padding: 0;
@@ -31,6 +33,7 @@ button {
   outline: none;
   appearance: none;
 }
+
 input[type="checkbox"] {
   margin: 0;
   border: none;
@@ -39,6 +42,7 @@ input[type="checkbox"] {
   outline: none;
   appearance: none;
 }
+
 #app {
   overflow: auto;
   box-sizing: border-box;
@@ -55,5 +59,20 @@ input[type="checkbox"] {
     font-size: 4em;
     font-weight: bold;
   }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: #ff8c97;
 }
 </style>
