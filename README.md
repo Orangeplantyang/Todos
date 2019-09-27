@@ -1,6 +1,6 @@
 # todos
 
-# A simple todo list
+# A simple todo list （vue-cli3 + vue-cli-plugin-electron-builder）
 
 ## Project setup
 
@@ -18,6 +18,17 @@ npm run serve
 
 ```
 npm run build
+```
+
+### Run on win
+
+```
+npm run electron:serve
+```
+
+### Get win application
+```
+npm run electron:build
 ```
 
 ### Run your tests
@@ -41,3 +52,4 @@ npm run test:unit
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Todos](http://todomvc.com/)
